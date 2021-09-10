@@ -62,9 +62,17 @@ button {
 .koala-transfer{
     width: 100px;
     height: 40px;
-    font-size: 10px;
+    font-size: 14px;
     margin: 5px;
 }
+
+.koala-delete{
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    margin: 5px;
+}
+
 button:hover {
     background-color: #22ff73;
     transition-duration: .45s;
