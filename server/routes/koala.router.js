@@ -36,7 +36,7 @@ pool.on('error', (error) => {
  * 
  * @apiParam {number} id, the id of the koala to transfer
  */
-router.put('/:id', (req, res) => {
+koalaRouter.put('/:id', (req, res) => {
     console.log(req.params);
     const koalaId = req.params.id;
     const queryKoala = `UPDATE FROM "koalas" 
@@ -54,7 +54,7 @@ router.put('/:id', (req, res) => {
 
 
 // POST
-router.post('/', (req, res) => {
+koalaRouter.post('/', (req, res) => {
     const newKoala = req.body;
     const queryText = `
         INSERT INTO "koalas" ("name", "gender","age","ready_to_transfer", "notes")
