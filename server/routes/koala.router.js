@@ -5,7 +5,7 @@ const koalaRouter = express.Router();
 // DB CONNECTION
 const pg = require('pg');
 const pool = new pg.Pool({
-    database: 'jazzy_sql', //name of database to connect to 
+    database: 'koalas', //name of database to connect to 
     host: 'localhost', //where is the database running? 
     port: '5432',
     max: 10, //max number of connection in a pool
@@ -22,7 +22,17 @@ pool.on('error', (error) => {
 
 
 // GET
-
+koalaRouter.get('/', (req, res) => {
+    let queryText = 'SELECT * FROM "koalas";';
+    pool.query(queryText).then(result => {
+      // Sends back the results in an object
+      res.send(result.rows);
+    })
+    .catch(error => {
+      console.log('error getting koalas', error);
+      res.sendStatus(500);
+    });
+  });
 
 // POST
 koalaRouter.post('/', (req, res) => {
