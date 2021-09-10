@@ -4,7 +4,7 @@ const koalaRouter = express.Router();
 // DB CONNECTION
 const pg = require('pg');
 const pool = new pg.Pool({
-    database: 'jazzy_sql', //name of database to connect to 
+    database: 'koalas', //name of database to connect to 
     host: 'localhost', //where is the database running? 
     port: '5432',
     max: 10, //max number of connection in a pool
@@ -23,8 +23,10 @@ pool.on('error', (error) => {
 // GET
 
 
+
 // POST
 router.post('/', (req, res) => {
+    console.log(`SERVER SIDE POST`, req.body);
     const newKoala = req.body;
     const queryText = `
         INSERT INTO "koalas" ("name", "gender","age","ready_to_transfer", "notes")
@@ -34,7 +36,7 @@ router.post('/', (req, res) => {
         newKoala.name, //$1
         newKoala.gender, //$2
         newKoala.age, //$3
-        newKoala.ready_to_transfer, //$4
+        newKoala.readyForTransfer, //$4
         newKoala.notes, //$5
     ]).then((result) => {
         res.sendStatus(200);
