@@ -77,6 +77,24 @@ koalaRouter.post('/', (req, res) => {
 });
 
 
-// DELETE
+// DELETE phaydara
+/**
+ * @api {delete} /koalas/:id deletes koala
+ * @apiDescription this will delete a specific koala from the DB
+ * 
+ * @apiParam {number} id, the id of the koala to be deleted
+ */
+koalaRouter.delete('/:id', (req, res) => {
+    console.log(req.params);
+    const koalaId = req.params.id;
+    console.log('in DELETE /koalas');
+    const queryKoala = `DELETE FROM "koalas" WHERE "id" = $1;`;
+    pool.query(queryKoala, [koalaId]).then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error in DELETE /koalas', error);
+        res.sendStatus(500)
+    });    
+});
 
 module.exports = koalaRouter;
