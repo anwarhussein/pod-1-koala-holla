@@ -21,12 +21,11 @@ pool.on('error', (error) => {
 });
 
 
-
 // GET
 
 
 // POST
-router.post('/', (req, res) => {
+koalaRouter.post('/', (req, res) => {
     const newKoala = req.body;
     const queryText = `
         INSERT INTO "koalas" ("name", "gender","age","ready_to_transfer", "notes")
