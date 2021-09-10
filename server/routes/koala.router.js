@@ -5,6 +5,8 @@ const koalaRouter = express.Router();
 // DB CONNECTION
 const pg = require('pg');
 const pool = new pg.Pool({
+    user:'postgres',
+    password:'2353',
     database: 'koalas', //name of database to connect to 
     host: 'localhost', //where is the database running? 
     port: '5432',
