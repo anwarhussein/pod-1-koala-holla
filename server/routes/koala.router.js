@@ -19,7 +19,7 @@ const koalaRouter = express.Router();
  * 
  * @apiParam {number} id, the id of the koala to transfer
  */
-router.put('/:id', (req, res) => {
+koalaRouter.put('/:id', (req, res) => {
     console.log(req.params);
     const koalaId = req.params.id;
     const queryKoala = `UPDATE FROM "koalas" 
