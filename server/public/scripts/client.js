@@ -12,6 +12,8 @@ $( document ).ready( function(){
 //listens for clicks on any buttons/inputs
 function clickListeners() {
   $( '#addButton' ).on( 'click', postKoala);
+
+  $('#viewKoalas').on('click', '.koala-transfer', getKoalas);
 }
 
 //adds the new koala from the inputs when #addButton is clicked
@@ -39,9 +41,37 @@ function postKoala() {
     });
 }; 
 
-
 function getKoalas(){
   console.log( 'in getKoalas' );
+  // ajax call to server to get koalas
+  $('#viewKoalas').empty();
+  $.ajax({
+    type: 'GET',
+    url: '/koalas'
+  }).then(function(response){
+      console.log('Get /koalas response',  response);
+      
+      for(let i = 0; i < response.length; i++){
+       
+        $('viewKoalas').append(`
+            <tr>
+                <td>${response[i].name}</td>
+                <td>${response[i].age}</td>
+                <td>${response[i].gender}</td>
+                <td>${response[i].readyForTransfer}</td>
+                <td>${response[i].notes}</td>
+                <td>
+                
+                   <button data-id="${response[i].id}" class="koala-transfer">
+                            Ready for Transfer
+                   </button>
+                </td>
+            </tr>
+        
+        `)
+      }
+
+  })
   // ajax call to server to get koalas
   
 } // end getKoalas
