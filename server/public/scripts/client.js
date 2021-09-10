@@ -53,12 +53,12 @@ function getKoalas(){
       
       for(let i = 0; i < response.length; i++){
        
-        $('viewKoalas').append(`
+        $('#viewKoalas').append(`
             <tr>
                 <td>${response[i].name}</td>
                 <td>${response[i].age}</td>
                 <td>${response[i].gender}</td>
-                <td>${response[i].readyForTransfer}</td>
+                <td>${(response[i].ready_to_transfer ? "Y" : "N")}</td>
                 <td>${response[i].notes}</td>
                 <td>
                 

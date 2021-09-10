@@ -59,7 +59,12 @@ button {
     margin: 15px 0px 15px 10px;
     border-radius: 5px;
 }
-
+.koala-transfer{
+    width: 100px;
+    height: 40px;
+    font-size: 10px;
+    margin: 5px;
+}
 button:hover {
     background-color: #22ff73;
     transition-duration: .45s;
